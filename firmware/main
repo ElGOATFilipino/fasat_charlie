@@ -1,0 +1,73 @@
+import board 
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.scanners.keypad import KeysScanner
+from kmk.keys import KC
+from kmk.modules.macros import Press, Release, Tap, Macros
+from kmk.modules.layers import Layers
+from kmk.extensions.rgb import AnimationModes
+# This is the main instance of your keyboard
+keyboard = KMKKeyboard()
+#RGB Extension
+from kmk.extensions.rgb import RGB
+rgb = RGB(pixel_pin=board.D5, 
+          num_pixels=16, 
+          val_limit=200, 
+          hue_default=0, 
+          sat_default=100, 
+          rgb_order=(1, 0, 2), 
+          val_default=200,
+          hue_step=5,
+          sat_step=5,
+          val_step=10,
+          animation_speed=1,
+          breathe_center=10
+          )
+keyboard.extensions.append(rgb)
+
+
+#Meida keys extension
+from kmk.extensions.media_keys import MediaKeys
+keyboard.extensions.append(MediaKeys())
+
+# Add the macro extension
+macros = Macros()
+keyboard.modules.append(macros)
+
+#Rotary variables
+layers = Layers()
+
+#Add rotary encoder extension
+from kmk.modules.encoder import EncoderHandler
+encoder_handler = EncoderHandler()
+keyboard.modules = [layers, encoder_handler]
+# Regular GPIO Encoder
+encoder_handler.pins = (
+    # regular direction encoder and a button
+    (board.D1, board.D3, board.D2) # encoder #1 
+)
+
+#Encoder.handler pins
+encoder_handler.divisor = 2
+encoder_handler.pins = ( (board.D3, board.D2, None) )
+
+
+# Define your pins here!
+PINS = [board.D7, board.D8, board.D9, board.D10,board.D6, board.D5]
+
+# Tell kmk we are not using a key matrix
+keyboard.matrix = KeysScanner(
+    pins=PINS,
+    value_when_pressed=False,
+)
+
+# Here you define the buttons corresponding to the pins
+# Look here for keycodes: https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/keycodes.md
+# And here for macros: https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md
+keyboard.keymap = [
+    [KC.A, KC.DELETE, KC.MACRO("Hello world!"), KC.Macro(Press(KC.LCMD), Tap(KC.S), Release(KC.LCMD)),]
+]
+
+# Start kmk!
+if __name__ == '__main__':
+    keyboard.go()
+
