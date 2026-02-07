@@ -18,3 +18,5 @@ The top exposes the pcb so the leds can be seen and has a circular hole where th
 Lastly, the flag is just a decorative piece that contains acknowlegements.
 
 ![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Screenshot%202026-02-07%20182903.png)
+
+Here's how it'll all fit together
