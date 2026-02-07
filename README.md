@@ -1,4 +1,4 @@
-# FASat_charlie
+# FASat_charlie macropad
 This is a macropad in the shape of the chilean satelite FASat-CHARLIE. It has 6 keys with a rotary encoder, 16 SK6812MINI-E leds on the edges of its pcb and uses kmk firmware.
 
 I made this macropad to help me open the websites I need for school instantly, to record as well as mute! (Since I costantly forget the keybinds for those).
