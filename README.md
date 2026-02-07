@@ -16,11 +16,11 @@ The case has 3 separate 3d printed pieces. The bottom, which has a 16 degree inc
 The top exposes the pcb so the leds can be seen and has a circular hole where the buttons and rotary encoder will be. 
 Lastly, the flag is just a decorative piece that contains acknowlegements.
 
-(Full_macro)
+![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/Full_macro.png)
 
 Here's how it'll all fit together
 
-(Overview)
+![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/Overview.png)
 
 *All made in Fusion 360
 
@@ -28,10 +28,10 @@ Here's how it'll all fit together
 The pcb was made in KiCAD! I had a lot of fun using this software for my pcb, I think i'll be using it for future projects!
 
 Schematic
-(Schematic)
+![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/Schematic.png)
 
 PCB (It contains a lot of errors, since the DRC thinks that the edge.cuts on the leds is not supposed to be there, but it is).
-(PCB)
+![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/PCB.png)
 
 ## Firmware features (not required, but still good to add!)
 - Rotary encoder can adjust the brightness of leds. If the button is pressed it turn the leds red, orange, yellow, green, blue, purple, make them do a rainbow animation and finally, off. (Example: if I press the button 3 times, the leds turn green.)
