@@ -1,4 +1,4 @@
-# fasat_charlie
+# Fasat_charlie
 
 This is a macropad with the shape of the chilean satelite FASat-CHARLIE. It has 6 keys witha rotary encoder, 16 sk6812mini-e leds on the edges of its pcb and uses kmk firmware.
 
@@ -20,3 +20,9 @@ Lastly, the flag is just a decorative piece that contains acknowlegements.
 ![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Screenshot%202026-02-07%20182903.png)
 
 Here's how it'll all fit together
+
+![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Screenshot%202026-02-07%20194310.png)
+
+*All mode in Fusion 360
+
+## PCB
