@@ -22,7 +22,7 @@ Here's how it'll all fit together
 
 ![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/Overview.png)
 
-*All made in Fusion 360
+*All made in Fusion 360, the model is too big so I had to compress it into a zip file.
 
 ## PCB
 The pcb was made in KiCAD! I had a lot of fun using this software for my pcb, I think i'll be using it for future projects!
