@@ -67,7 +67,7 @@ keyboard.modules = [layers, encoder_handler]
 # Regular GPIO Encoder
 encoder_handler.pins = (
     # regular direction encoder and a button
-    (board.D1, board.D3, board.D2) # encoder #1 
+    (board.GPIO29, board.GPIO28, board.GPIO27) # encoder #1 
 )
 
 #Encoder.handler pins
@@ -85,7 +85,7 @@ encoder_handler.map = [
 ]
 
 # Define your macropad pins here!
-PINS = [board.D7, board.D8, board.D9, board.D10,board.D6, board.D5] #B1, B2, B3, B4, B5, B6
+PINS = [board.GPIO0, board.GPIO1, board.GPIO2, board.GPIO4,board.GPIO3, board.GPIO6] #B1, B2, B3, B4, B5, B6
 
 # Tell kmk we are not using a key matrix
 keyboard.matrix = KeysScanner(
