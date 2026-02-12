@@ -1,0 +1,107 @@
+import board
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.scanners.keypad import KeysScanner
+from kmk.keys import KC
+from kmk.modules.macros import Press, Release, Tap, Macros
+from kmk.modules.layers import Layers
+from kmk.extensions.rgb import AnimationModes
+from kmk.modules.encoder import EncoderHandler
+from kmk.extensions.rgb import RGB
+from kmk.extensions.media_keys import MediaKeys
+
+#Encoder color variable
+Encodercolor = 0
+
+def change_encoder_color():
+    global Encodercolor
+    Encodercolor = (Encodercolor + 1) % 8
+
+    encoder_function = {
+        0: lambda:KC.RGB_MODE_PLAIN and rgb.set_rgb_fill(250, 250, 250), # white
+        1: lambda:rgb.set_rgb_fill(250, 5, 5), #Red
+        2: lambda:rgb.set_rgb_fill(250, 150, 0), #Orange
+        3: lambda:rgb.set_rgb_fill(250, 250, 3), #Yellow
+        4: lambda:rgb.set_rgb_fill(0, 250, 4), #Green
+        5: lambda:rgb.set_rgb_fill(0, 0, 250), #Blue
+        6: lambda:rgb.set_rgb_fill(140, 0, 250), #Purple
+        7: lambda:KC.RGB_Mode_RAINBOW, #Rainbow
+    }
+    encoder_handler.map[0]['button'] = encoder_function[Encodercolor]
+    encoder_function[Encodercolor]()  # Execute immediately
+    print(f"Mode {Encodercolor}")
+    
+# This is the main instance of your keyboard
+keyboard = KMKKeyboard()
+
+#RGB Extension
+rgb = RGB(pixel_pin=board.D5, 
+          num_pixels=16, 
+          val_limit=255, 
+          hue_default=0, 
+          sat_default=100, 
+          rgb_order=(1, 0, 2), 
+          val_default=200,
+          hue_step=5,
+          sat_step=5,
+          val_step=10,
+          animation_speed=1,
+          breathe_center=1,
+          knight_effect_length=16,
+          animation_mode=AnimationModes.STATIC,
+          reverse_animation=False,
+          refresh_rate=60,
+          )
+keyboard.extensions.append(rgb)
+
+# Add the macro extension
+macros = Macros()
+keyboard.modules.append(macros)
+
+#Rotary variables
+layers = Layers()
+
+#Add rotary encoder extension
+encoder_handler = EncoderHandler()
+keyboard.modules = [layers, encoder_handler]
+
+# Regular GPIO Encoder
+encoder_handler.pins = (
+    # regular direction encoder and a button
+    (board.D1, board.D3, board.D2) # encoder #1 
+)
+
+#Encoder.handler pins
+encoder_handler.divisor = 2
+encoder_handler.pins = ( (board.D3, board.D2, None) )
+
+#Encoder mapping
+encoder_handler.map = [ 
+    # Encoder 1
+    {
+        'clockwise': KC.RGB_VAI,
+        'counter_clockwise': KC.RGB_VAD,
+        'button': change_encoder_color()
+    },
+]
+
+# Define your macropad pins here!
+PINS = [board.D7, board.D8, board.D9, board.D10,board.D6, board.D5] #B1, B2, B3, B4, B5, B6
+
+# Tell kmk we are not using a key matrix
+keyboard.matrix = KeysScanner(
+    pins=PINS,
+    value_when_pressed=False,
+)
+
+# Here you define the buttons corresponding to the pins
+# Look here for keycodes: https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/keycodes.md
+# And here for macros: https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md
+keyboard.keymap = [
+    [KC.LGUI(KC.LALT(KC.R)) , KC.LCTRL(KC.LALT(KC.G)), KC.LCTRL(KC.LALT(KC.T)), KC.LCTRL(KC.LALT(KC.V)), KC.LCTRL(KC.LALT(KC.W)), KC.MUTE],  
+     #Record, Google classroom, Turbo.ai, Canva, Word, Mute
+]
+
+# Start kmk!
+if __name__ == '__main__':
+    keyboard.go()
+
