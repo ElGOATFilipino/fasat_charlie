@@ -34,7 +34,7 @@ PCB (It contains a lot of errors, since the DRC thinks that the edge.cuts on the
 ![alt text](https://github.com/ElGOATFilipino/fasat_charlie/blob/main/Images/PCB.png)
 
 ## Firmware features (not required, but still good to add!)
-- Rotary encoder can adjust the brightness of leds. If the button is pressed it turn the leds red, orange, yellow, green, blue, purple, make them do a rainbow animation and finally, off. (Example: if I press the button 3 times, the leds turn green.)
+- Rotary encoder can adjust the brightness of leds. If the button is pressed it turn the leds red, orange, yellow, green, blue, purple, make them do a rainbow animation and finally, off. (Example: if I press the button 4 times, the leds turn green.)
 - Four of the keys open Turbo.ai, Canva, Word, Google classroom. The other two start recording on my computer and mute volume.
 
 ## BOM
